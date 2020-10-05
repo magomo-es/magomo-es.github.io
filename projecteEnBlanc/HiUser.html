@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-es">
+    <head>
+        <title>Hi User - Insert your user name</title>
+        <meta lang="es-es" charset="utf-8" />
+        <style>
+        #greatBtn { cursor: pointer; background-color: chartreuse; color: coral; padding: 3px 10px; }
+        </style>
+
+    </head>
+    <body>
+        <!--
+        Fes un exemple que inclogui una mica de codi HTML, una mica d’estil i afegeix el JS necessari per poder 
+        demanar el nom a l’usuari i que en clicar un botó ens saludi dient: “Hola món!” i concateni el nom al 
+        final del missatge.
+        Comprova que l’exemple funciona
+        Si vols pots afegir una forma de dir quantes vegades s’ha saludat
+        Segueix jugant i fent proves tant com vulguis i aprofita per visitar els menús de JSFiddle, ens ofereix 
+        moltes opcions “amagades” que és convenient aprendre a fer servir. 
+        No saps per on començar a programar amb JavaScript? Et recomano visitar la página 
+        https://www.w3schools.com/js/default.asp que és la referència estàndard de JavaScript. Aprofita per 
+        navegar i entendre com està organitzada, la farem servir de forma intensiva durant tot el curs.  
+        -->
+        <script>var counterHis = 0;</script>
+        <input type="hidden" id="Salutation" value="Hola món" />
+        <input type="hidden" id="LastUser" value="" />
+        <label>Ingresa nombre de usuario</label>
+        <input type="text" id="UserName" maxlength="100" value="" />
+        <button id="greatBtn" onclick="sayHi()" >Greet</button>
+    </body>
+    <script>
+        function sayHi() {
+
+            var objuser = document.getElementById("UserName");
+            var objlast = document.getElementById("LastUser");
+
+            if ( objuser.value.length > 0 ) {
+
+                if ( objlast.value != objuser.value ) { 
+                    counterHis = 0; 
+                    objlast.value = objuser.value; 
+                }
+
+                var xtraText = "";
+                if ( ++counterHis > 1 ) { 
+                    xtraText += "... again ... ( " + counterHis + " times )"; 
+                }
+
+                alert( document.getElementById("Salutation").value + " " + objuser.value + xtraText );
+
+            }
+        }
+    </script>
+</html>
+
