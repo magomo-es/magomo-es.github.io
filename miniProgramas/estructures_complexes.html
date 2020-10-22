@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /-->
+
+    <!--meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /-->
+
+    <title>DWEC-M06 (DAW2B) - Estructuras de datos complejos</title>
+
+    <!-- link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Chilanka&display=swap" rel="stylesheet" /-->
+
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style></style>
+
+    <script>
+        var CustomersList = [];
+        var theId = 0;
+        var theResult = "";
+        var boxOpened = "";
+        var customerX = {
+            id: 0,
+            firstName: "",
+            lastName: "",
+            jetId: function() { return this.id; },
+            jetFullname: function() { return this.firstName + " " + this.lastName; },
+            xetFirstname: function(nombre) { this.firstName = nombre; },
+            xetLastname: function(apellido) { this.firstName = apellido; },
+            xetCustomer: function(numero, nombre, apellido) { 
+                this.id = numero; 
+                this.firstName = nombre; 
+                this.lastName = apellido; 
+            },
+            
+        };
+
+        var customer = {
+            id: 0,
+            firstName: "",
+            lastName: "",
+            jetId: "",
+            jetFullname: "",
+            xetFirstname: "",
+            xetLastname: "",
+            xetCustomer: function(numero, nombre, apellido) { 
+                this.id = numero; 
+                this.firstName = nombre; 
+                this.lastName = apellido; 
+            }
+        };
+
+        
+        function showCustomerForm() {
+            document.getElementById("customerFormTitle").value = "Nuevo Customer";
+            document.getElementById("customerFormSend").value = "Agregar";
+            document.getElementById("customerFormSend").onclick = addCustomer;
+            closeBox();
+            boxOpened = "customerForm";
+            document.getElementById("customerForm").style.display = "block";
+        }
+
+        function showClientesForm() {
+            document.getElementById("customerFormTitle").value = "Nuevo Cliente";
+            document.getElementById("customerFormSend").value = "Agregar";
+            document.getElementById("customerFormSend").onclick = addCliente;
+            closeBox();
+            boxOpened = "customerForm";
+            document.getElementById("customerForm").style.display = "block";
+        }
+
+        
+
+        function addCustomerX() {
+            var objName = document.getElementById("customerFormFirstname");
+            var objLast = document.getElementById("customerFormLastname");
+            if ( objName.value.length > 0 && objLast.value.length > 0 ) {
+
+                if ( findCustomer(objName.value, objLast.value) < 0 ) {
+
+                    CustomersList.push( new customer.setCustomer( ++theId, objName.value, objLast.value ) );
+                    alert( "Agregado cliente " + theId + " (" + (theId-1) + ") : " + CustomersList[theId-1].jetFullname() );
+
+                } else {
+
+                    alert( "Error en ingreso de datos !!! Nombre existente" );
+
+                }
+
+            } else {
+                alert( "Error en ingreso de datos !!! [ "+objName.value +"("+objName.value.length+") " + objLast.value +"("+objLast.value.length+") " + " ]" );
+            }
+        }
+
+        function addCustomer() {
+            var objName = document.getElementById("customerFormFirstname");
+            var objLast = document.getElementById("customerFormLastname");
+            if ( objName.value.length > 0 && objLast.value.length > 0 ) {
+
+                if ( findCustomer(objName.value, objLast.value) < 0 ) {
+
+                    var tmp = new customer.setCustomer( ++theId, objName.value, objLast.value );
+                    tmp.jetId = function() { return this.id; };
+                    tmp.jetFullname = function() { return this.firstName + " " + this.lastName; };
+                    tmp.xetFirstname = function(nombre) { this.firstName = nombre; };
+                    tmp.xetLastname = function(apellido) { this.firstName = apellido; };
+                    CustomersList.push( tmp );
+                    alert( "Agregado cliente " + theId + " (" + (theId-1) + ") : " + CustomersList[theId-1].jetFullname() );
+
+                } else {
+
+                    alert( "Error en ingreso de datos !!! Nombre existente" );
+
+                }
+
+            } else {
+
+                alert( "Error en ingreso de datos !!! [ "+objName.value +"("+objName.value.length+") " + objLast.value +"("+objLast.value.length+") " + " ]" );
+
+            }
+        }
+
+        function findCustomer(nombre, apellido) {
+            theResult = -1;
+            for ( var i = 0; i < CustomersList.length; ++i ) {
+                if (CustomersList[i].firstName == nombre && CustomersList[i].lastName == apellido ) { theResult = i; }
+            }
+            return theResult;
+        }
+
+        function genCustomersList() {
+            theResult = "";
+            for ( var i = 0; i < CustomersList.length; ++i ) {
+                theResult += CustomersList[i].jetId() + " - " + CustomersList[i].jetFullname() + "<br />";
+            }
+        }
+
+
+        function showCustomersList() {
+            genCustomersList();
+            showResults();
+        }
+
+        
+        // - - - - - Visualiza 
+        function showResults() {
+            document.getElementById("resultadoContent").innerHTML = theResult;
+            document.getElementById("resultadoBtn").innerHTML = "Cerrar";
+            document.getElementById("resultadoBtn").onclick = closeBox;
+            closeBox();
+            boxOpened = "resultadoBox";
+            document.getElementById("resultadoBox").style.display = "block";
+        }
+
+        // - - - - - Cierra box de parametro "theBox" o almacenado en "boxOpened"
+        function closeBox(theBox) {
+            var doClose = false;
+            if (typeof theBox == "string" && theBox.length>0) {
+                var doClose = true;
+                var objBox = document.getElementById(theBox);
+            } else if (boxOpened.length>0) { 
+                var doClose = true;
+                var objBox = document.getElementById(boxOpened);
+            }
+            if (doClose) { objBox.style.display = "none"; }
+        }
+
+        </script>
+
+</head>
+
+<body>
+
+    <article>
+
+        <h1 class="ffa c000 title1 alCntr">Desenvolupament d’Aplicacions Web · DWEC</h1>
+        <h2 class="ffa c000 title1 alCntr">M06-CT2-P2.1 (parte 1): Estructuras para almacenar información</h2>
+        <h3 class="ffa c000 title1 alCntr">Estructuras de datos complejos</h3>
+
+        <section>
+            <div>
+                <input type="button" value="Agregar Customers" onclick="showCustomerForm()" /><br />
+                <input type="button" value="Listado Clientes" onclick="showCustomersList()" /><br />
+            </div>
+
+
+            <form id="customerForm" name="customerForm" style="display: none;">
+                <h1 id="customerFormTitle"></h1>
+                <label>Nombre: </label><input type="text" id="customerFormFirstname" name="customerFormFirstname" value="Marcelo" /><br />
+                <label>Apellido: </label><input type="text" id="customerFormLastname" name="customerFormLastname" value="Goncevatt" /><br />
+                <input type="button" id="customerFormclose" name="customerFormSend" value="Close" onclick="closeBox('customerForm')" />
+                <input type="button" id="customerFormSend" name="customerFormSend" value="" onclick="" />
+            </form>
+
+            <div id="resultadoBox" style="display: none;">
+                <div id="resultadoContent"></div>
+                <button id="resultadoBtn" onclick=""></button>
+            </div>
+
+        </section>
+
+    </article>
+
+    <a href="../index.html" target="_self" id="backBtn">Back to Index</a>
+
+</body>
+
+</html>

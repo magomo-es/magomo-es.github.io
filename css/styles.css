@@ -1,0 +1,28 @@
+body { color: #000; font-size: 12px; background-color: #fff; padding: 0; margin: 0; display: block; box-sizing: border-box; }
+img { border:  none; }
+
+article { box-sizing: border-box; width: 100%; max-width: 1024px; height: auto; padding: 20px; margin: 50px auto; background-color: azure; }
+
+article section { box-sizing: border-box; width: 90%; height: auto; padding: 10px; margin: 20px auto; background-color: #fff; }
+
+.ffa { font-family: 'Balsamiq Sans', cursive; }
+.ffb { font-family: 'Chilanka', cursive; }
+.title1 { line-height: 30px; padding: 10px 0; font-size: 24px; font-weight: bold; line-height: 30px; }
+.title2 { line-height: 18px; padding: 10px 0; font-size: 24px; font-weight: 700; line-height: 24px; }
+.texts { line-height: 14px; padding: 10px 0; font-size: 24px; font-weight: normal; line-height: 20px; }
+.cfff { color: #fff; }
+.c000 { color: #000; }
+.c555 { color: #555; }
+.alCntr { text-align: center; }
+.alLeft { text-align: left; }
+.alRigh { text-align: right; }
+.alJust { text-align: justify; }
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
+.optionBtn { width: auto; height: auto; padding: 10px; font-family: Arial; font-weight: bold; color: #fff; border-radius: 10px; cursor: pointer; }
+
+#backBtn { display: block; position: fixed; right: 20px; bottom: 20px; width: auto; height: auto; padding: 10px; font-family: Arial; font-weight: bold; color: #fff; background-color: brown; border-radius: 10px; }
