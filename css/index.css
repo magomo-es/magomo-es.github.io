@@ -5,15 +5,8 @@
 .grider2cell { display:block; width: auto; min-width:100px; height:auto; min-height: 30vh; margin: 0 20px 20px; }
 .celltxt { display:block; width:100%; height:auto; padding:20px; font-size:30px; text-align:center; color:#FFFFFF; font-weight:bold; }
 .cellalttxt { color:#ccc; font-style:italic; }
-#celda01 { background:url(/images/corner-left.png) #006666 center bottom no-repeat; background-size: 60%; }
-#celda02 { background:url(/images/corner-right.png) #006666 center bottom no-repeat; background-size: 60%; }
-
-@media only screen and (max-width: 1030px) { 
-
-	#grider3 { grid-template-columns: auto auto; }
-	.grider3cell { min-height:25vw; }
-
-}
+#celda01 { background:url(/images/corner-left.png) #006666 left bottom no-repeat; background-size: 20%; }
+#celda02 { background:url(/images/corner-right.png) #006666 right bottom no-repeat; background-size: 20%; }
 
 @media only screen and (max-width: 700px) { 
 

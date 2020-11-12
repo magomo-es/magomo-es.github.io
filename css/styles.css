@@ -3,8 +3,6 @@ article { box-sizing: border-box; width: 100%; max-width: 1024px; height: auto; 
 
 article section { box-sizing: border-box; width: 90%; height: auto; padding: 10px; margin: 20px auto; background-color: #fff; }
 
-.ffa { font-family: 'Roboto', Arial; }
-.ffb { font-family: 'Lato', Arial; }
 .title1 { line-height: 30px; padding: 10px 0; font-size: 24px; font-weight: bold; line-height: 30px; }
 .title2 { line-height: 18px; padding: 10px 0; font-size: 24px; font-weight: 700; line-height: 24px; }
 .texts { line-height: 14px; padding: 10px 0; font-size: 24px; font-weight: normal; line-height: 20px; }

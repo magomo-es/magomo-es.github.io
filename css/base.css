@@ -64,7 +64,7 @@ img { width: auto; max-width:100%; border: none}
 .smlsiz { font-size: var(--sizeSmall); }
 
 .ttlfnt { font-family: 'Lato', sans-serif; }
-.txtfnt { font-family: 'Josefin Sans', sans-serif; }
+.txtfnt { font-family: 'Roboto', Arial; }
 
 .ttlclr { color: var(--colorTitle); }
 .txtclr { color: var(--colorText); }
