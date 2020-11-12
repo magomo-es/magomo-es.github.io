@@ -90,6 +90,15 @@ img { width: auto; max-width:100%; border: none}
 .mgry20 { margin-top: 20px; margin-bottom: 20px; }
 
 
+.pdtp20 { margin-top: 20px; }
+.pdbn20 { margin-bottom: 20px; }
+.pdlf20 { margin-left: 20px; }
+.pdrg20 { margin-right: 20px; }
+
+.pdnq20 { margin: 20px; }
+.pdnx20 { margin-left: 20px; margin-right: 20px; }
+.pdny20 { margin-top: 20px; margin-bottom: 20px; }
+
 .bldr { font-weight:bold }
 
 .blck { display: block; width:100%; height:auto; }
