@@ -1,0 +1,29 @@
+@charset "utf-8";
+/* CSS Document */
+
+#grider4 { width:100%; height: auto; display: grid; margin: 5vw auto; grid-gap: 20px; grid-template-columns: auto auto auto auto; }
+.grider4cell { display:block; width: auto; min-width:100px; height:auto; margin: 0 20px 20px; }
+.celltxt { display:block; width:100%; height:auto; padding:20px; font-size:30px; text-align:center; color:#FFFFFF; font-weight:bold; }
+.cellalttxt { color:#ccc; font-style:italic; }
+#celda01 { background-color: #006666; }
+
+@media only screen and (max-width: 1024px) { 
+
+	#grider4 { margin: 0 auto; padding: 0 5% 0; grid-template-columns: auto auto auto; }
+
+}
+
+@media only screen and (max-width: 800px) { 
+
+	#grider4 { margin: 0 auto; padding: 0 5% 0; grid-template-columns: auto auto; }
+
+}
+
+@media only screen and (max-width: 600px) { 
+
+	#grider4 { width:100%; display: block; margin: 0 auto; padding: 0 5% 0; }
+	.grider4cell { margin:30px auto 0; }
+
+
+}
+

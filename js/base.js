@@ -14,7 +14,7 @@ function viewMenu() {
 	if (objmnu.style.display=='none') { objmnu.style.display='block'; }
 	else if (objmnu.style.display=='block') { objmnu.style.display='none'; }
 	else { 
-		if(window.innerWidth<=2500) { objmnu.style.display='block'; }
-		else { objmnu.style.display='none'; }
+		if(window.innerWidth>=1340) { objmnu.style.display='none'; }
+		else { objmnu.style.display='block'; }
 	}
 }

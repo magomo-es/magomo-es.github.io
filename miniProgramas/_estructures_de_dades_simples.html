@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <!--meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /-->
+
+    <!--meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" /-->
+
+    <title>DWEC-M06 (DAW2B) - Estructuras de datos simples</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Chilanka&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style></style>
+
+    <script>
+
+    // - - - - - Variables
+    var thename = "";
+    var theprice = 0;
+    var thediscount = 0;
+
+    // - - - - - getData
+    function getData() {
+        
+        thename = prompt("Insert Your Name", "Harry Potter");
+
+        if (thename.length>0) {
+            alert("Hello " + thename +"!!! ... Have a nice day");
+        }
+
+    } 
+
+    // - - - - - getCalc
+    function getCalc() {
+        if (thename.length==0) {
+            alert("Sorry, we don't know you !!!... Try again later");
+        } else {
+            theprice = prompt("Insert the Price", "");
+            thediscount = prompt("Insert the Discount", "");
+
+
+        }
+
+
+    }
+
+    </script>
+
+</head>
+
+<body>
+
+    <article>
+
+        <h1 class="ffa c000 title1 alCntr">Desenvolupament d’Aplicacions Web · DWEC</h1>
+        <h2 class="ffa c000 title1 alCntr">M06-CT2-P2.1 (parte 1): Estructuras para almacenar información</h2>
+        <h3 class="ffa c000 title1 alCntr">Estructuras de datos simples</h3>
+
+        <section>
+
+            <input type="button" class="optionBtn" style="background-color: blue;" value="Hi !!!" onclick="getData()">
+            <input type="button" class="optionBtn" style="background-color:chocolate;" value="Calc" onclick="getCalc()">
+
+        </section>
+
+    </article>
+
+    <a href="../index.html" target="_self" id="backBtn">Back to Index</a>
+
+</body>
+
+</html>
