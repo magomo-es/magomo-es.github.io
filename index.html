@@ -213,12 +213,12 @@
 
 					<div id="grider2">
 
-						<div id="celda01" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/9k24zd8x/27/embedded/" onclick="viewIframeBox(this)">
+						<div id="celda01" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/9k24zd8x/29/embedded/" onclick="viewIframeBox(this)">
 							<p class="ttlfnt celltxt">Estructuras de datos básicas (Variables)</p>
 							<p class="txtfnt smlr cellalttxt algrig pdrg20 pdbn20" style="padding-left: 22%;">Trabajo con variables de tipo simple (enteros, decimales, lógicos y cadenas)</p>
 						</div>
 
-						<div id="celda02" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/b5z9rqk1/3/embedded/" onclick="viewIframeBox(this)">
+						<div id="celda02" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/b5z9rqk1/4/embedded/" onclick="viewIframeBox(this)">
 							<p class="ttlfnt celltxt">Estructuras de datos complejas (Arrays y Objetos)</p>
 							<p class="txtfnt smlr cellalttxt alglef pdlf20 pdbn20" style="padding-right: 22%;">Trabajo con variables de tipo complejo (objetos y arrays)</p>
 						</div>
@@ -241,7 +241,7 @@
 							<p class="txtfnt smlr cellalttxt algrig pdrg20 pdbn20" style="padding-left: 22%;">Uso de métodos de objetos de JavaScript. Uso del método ordenacion personalizado (sort) de array</p>
 						</div>
 
-						<div id="celda02" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/17obuyzh/5/embedded/" onclick="viewIframeBox(this)">
+						<div id="celda02" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/17obuyzh/9/embedded/" onclick="viewIframeBox(this)">
 							<p class="ttlfnt celltxt">Elementos del DOM</p>
 							<p class="txtfnt smlr cellalttxt alglef pdlf20 pdbn20" style="padding-right: 22%;">Trabajo con accesos a elementos del DOM</p>
 						</div>
@@ -258,58 +258,20 @@
 
 	<!-- Iframe de ejecucion JSFiddle -->
 
-<!-- bloquear scroll parent -->
-
-<style>
-#baseboxifrm { position: fixed; top: 0px; right: 0px; bottom: 0; left: 0; margin: 0; padding: 0; background-color: rgba(0,0,0,.8); }
-#iframeBox { width: 1024px; height: calc(100vh - 160px); margin: 80px calc( (100% - 1024px) / 2 ); }
-#closebox { position: absolute; width: 30px; height: 30px; top: 20px; right: 20px; cursor: pointer; }
-</style>
+	<!-- bloquear scroll parent -->
 	
-			<div id="baseboxifrm" style="display: none;" data-open="0">
+	<div id="baseboxifrm" style="display: none;" data-open="0">
 
-				<svg id="closebox" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" onclick="viewIframeBox(this)">
-					<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFF" d="M33.27,20L20,20.09L43.33,50L20,79.91L33.27,80L50,58.55L66.73,80
-						L80,79.91L56.67,50L80,20.09L66.73,20L50,41.45L33.27,20z M0,50c0,27.61,22.39,50,50,50s50-22.39,50-50S77.61,0,50,0S0,22.39,0,50z
-						 M5,50C5,25.15,25.15,5,50,5s45,20.15,45,45S74.85,95,50,95S5,74.85,5,50z"/>
-				</svg>
+		<svg id="closebox" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" onclick="viewIframeBox(this)">
+			<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFF" d="M33.27,20L20,20.09L43.33,50L20,79.91L33.27,80L50,58.55L66.73,80
+				L80,79.91L56.67,50L80,20.09L66.73,20L50,41.45L33.27,20z M0,50c0,27.61,22.39,50,50,50s50-22.39,50-50S77.61,0,50,0S0,22.39,0,50z
+					M5,50C5,25.15,25.15,5,50,5s45,20.15,45,45S74.85,95,50,95S5,74.85,5,50z"/>
+		</svg>
 
-				<!--script id="fiddlebox" async src=""></script-->
-				<iframe id="iframeBox" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+		<!--script id="fiddlebox" async src=""></script-->
+		<iframe id="iframeBox" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 
-			</div>
-
-<script type="text/javascript">
-	// - - - - - establece el alto del iframe según su contenido
-	function onIframeLoaded( theobj ) {
-		if ( theobj ) { theobj.height = theobj.contentWindow.document.body.scrollHeight + "px"; }
-	}
-
-
-var bdobj = document.getElementsByTagName('BODY')[0];
-var frbox = document.getElementById('baseboxifrm');
-var frobj = document.getElementById('iframeBox');
-
-function viewIframeBox( callingobj ) {
-
-	if ( frbox.dataset.open == "0" ) {
-
-		frbox.dataset.open = "1";
-		frbox.style.display = "block";		
-		frobj.src = callingobj.dataset.jsfiddle;
-		bdobj.style.overflow = 'hidden';
-
-	} else {
-
-		frbox.dataset.open = "0";
-		frbox.style.display = "none";		
-		frobj.src = "";
-		bdobj.style.overflow = 'auto';
-
-	}
-}
-
-</script>   
+	</div><script src="./js/index.js"></script>
 
 	<!-- Iframe de ejecucion JSFiddle -->
 
