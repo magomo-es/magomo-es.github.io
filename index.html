@@ -315,45 +315,51 @@
 	}
 
 
+var bdobj = document.getElementsByTagName('BODY');
 var frbox = document.getElementById('baseboxifrm');
 var frobj = document.getElementById('iframeBox');
-var bdobj = document.getElementsByTagName('BODY');
 
 function viewIframeBox( callingobj ) {
 
+	
+
 	if ( frbox.dataset.open == "0" ) {
 
-		var frbox = document.getElementById('baseboxifrm');
+		frbox.dataset.open = "1";
+		frbox.style.display = "block";		
 		frobj.src = callingobj.dataset.jsfiddle;
-		var bdobj = document.getElementsByTagName('BODY');
+		bdobj.style.overflow = 'hidden';
+
+	} else {
+
+		frbox.dataset.open = "0";
+		frbox.style.display = "none";		
+		frobj.src = "";
+		bdobj.style.overflow = 'auto';
 
 	}
-
-
-
-
-
-
 }
 
 </script>   
 	
+<style>
+#baseboxifrm { position: fixed; top: 0px; right: 0px; bottom: 0; left: 0; margin: 0; padding: 0; background-color: rgba(0,0,0,.8); }
+#iframeBox { width: 96%; height: 94vh; margin: 4vh 2% 2vh; }
+#closefrbox { position: absolute; width: 50px; height: 50px; top: 10px; right: 10px; }
+</style>
 	
-	
-			<div id="baseboxifrm" style="position: fixed; top: 0px; right: 0px; bottom: 0; left: 0; margin: 0; padding: 0; background-color: rgba(0,0,0,.8);" data-open="0">
-				<svg id="closebox" x="0px" y="0px"  style="position: absolute; width: 50px; height: 50px; top: 10px; right: 10px;" 
-				viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" 
-				onClick="this.parentElement.style.display='none';">
+			<div id="baseboxifrm" style="display: none;" data-open="0">
+
+				<svg id="closebox" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" onClick="viewIframeBox(this)">
 					<g id="iconX">
-					  <path style="fill:var(--colorFill);fill-opacity:1;stroke:var(--colorFill);stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+					  <path style="fill:var(--colorFill);fill-opacity:1;stroke:var(--colorFill);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
 					  d="m 136.37109,187.11914 74.09961,94.95313 -74.09961,93.94531 h 44.95313 c 16.25936,-24.69511 33.14116,-48.98302 48.99023,-73.94531 19.11265,23.00904 34.41902,49.07416 51.00977,73.94531 h 43.94531 l -76.09961,-94.95508 76.09961,-93.94336 h -44.95508 c -16.25932,24.69449 -33.14145,48.98152 -48.99023,73.94336 -19.11238,-23.00859 -34.41897,-49.07287 -51.00977,-73.94336 z" />
 					</g>
 				</svg>
-				<div id="containerboxifrm" style="width: calc(100% - 60px); max-width: 1064px; height: 100%; margin: 150px auto 20px;">
 
-					<script async src="//jsfiddle.net/magomo/9k24zd8x/26/embed/js,html,css,result/dark/"></script>
-	
-				</div>
+				<!--script id="fiddlebox" async src=""></script-->
+				<iframe id="iframeBox" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
 			</div>
 
 

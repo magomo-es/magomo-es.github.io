@@ -2,7 +2,7 @@
 /* CSS Document */
 
 #grider2 { width:100%; height: auto; display: grid; margin: 5vw auto; grid-gap: 20px; grid-template-columns: auto auto; }
-.grider2cell { display:block; width: auto; min-width:100px; height:auto; margin: 0 20px 20px; }
+.grider2cell { display:block; width: auto; min-width:100px; height:auto; margin: 0 20px 20px; cursor: pointer; }
 .celltxt { display:block; width:100%; height:auto; padding:20px; font-size:30px; text-align:center; color:#FFFFFF; font-weight:bold; }
 .cellalttxt { color:#ccc; font-style:italic; }
 #celda01 { background:url(../images/corner-left.png) #006666 left bottom no-repeat; background-size: 20%; }
