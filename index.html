@@ -309,16 +309,15 @@
 <style>
 #baseboxifrm { position: fixed; top: 0px; right: 0px; bottom: 0; left: 0; margin: 0; padding: 0; background-color: rgba(0,0,0,.8); }
 #iframeBox { width: 1024px; height: calc(98vh - 130px); margin: 130px calc( (100% - 1024px) / 2 ) 2vh; }
-#closebox { position: absolute; width: 50px; height: 50px; top: 10px; right: 10px; cursor: pointer; box-shadow: 1px 1px 5px #000; }
+#closebox { position: absolute; width: 30px; height: 30px; top: 20px; right: 20px; cursor: pointer; }
 </style>
 	
 			<div id="baseboxifrm" style="display: none;" data-open="0">
 
-				<svg id="closebox" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" onClick="viewIframeBox(this)">
-					<g id="iconX">
-					  <path style="fill:var(--colorFill);fill-opacity:1;stroke:var(--colorFill);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-					  d="m 136.37109,187.11914 74.09961,94.95313 -74.09961,93.94531 h 44.95313 c 16.25936,-24.69511 33.14116,-48.98302 48.99023,-73.94531 19.11265,23.00904 34.41902,49.07416 51.00977,73.94531 h 43.94531 l -76.09961,-94.95508 76.09961,-93.94336 h -44.95508 c -16.25932,24.69449 -33.14145,48.98152 -48.99023,73.94336 -19.11238,-23.00859 -34.41897,-49.07287 -51.00977,-73.94336 z" />
-					</g>
+				<svg id="closebox" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100">
+					<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFF" d="M33.27,20L20,20.09L43.33,50L20,79.91L33.27,80L50,58.55L66.73,80
+						L80,79.91L56.67,50L80,20.09L66.73,20L50,41.45L33.27,20z M0,50c0,27.61,22.39,50,50,50s50-22.39,50-50S77.61,0,50,0S0,22.39,0,50z
+						 M5,50C5,25.15,25.15,5,50,5s45,20.15,45,45S74.85,95,50,95S5,74.85,5,50z"/>
 				</svg>
 
 				<!--script id="fiddlebox" async src=""></script-->
