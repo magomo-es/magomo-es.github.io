@@ -17,44 +17,32 @@
 <meta name="Revisit" content="7 days" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+<link rel="shortcut icon" type="image/png" href="../favicon.png"/>
 
-<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
+<link rel="apple-touch-icon" sizes="57x57" href="../apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="../apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="../apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="../apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="../apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="../apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="../apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="../apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="../android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+
 <meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="msapplication-TileImage" content="../ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,423;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,423;1,500;1,600;1,700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="../css/fonts.css" />
+<link type="text/css" rel="stylesheet" href="../css/base.css" />
+<link type="text/css" rel="stylesheet" href="../css/styles.css" />
+<link type="text/css" rel="stylesheet" href="../css/index.css" />
 
-<link type="text/css" rel="stylesheet" href="/css/fonts.css" />
-<link type="text/css" rel="stylesheet" href="/css/base.css" />
-<link type="text/css" rel="stylesheet" href="/css/styles.css" />
-<link type="text/css" rel="stylesheet" href="/css/index.css" />
-
-<script src="/js/base.js"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167128356-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-167128356-1');
-</script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
+<script src="../js/base.js"></script>
 
 </head>
 
@@ -219,7 +207,7 @@
 
 		<div id="grider2">
 
-			<a href="/miniProgramas/estructures_de_dades_simples.html" target="_self" id="celda01" class="grider2cell">
+			<a href="/miniProgramas/estructures_de_dades_simples.html" target="_self" id="celda01" class="grider2cell" onclick="document.getElementById('demobox_01').style.display='block'">
 				<p class="ttlfnt celltxt">Estructuras de datos básicas (Variables)</p>
 				<p class="txtfnt smlr cellalttxt algrig pdrg20 pdbn20" style="padding-left: 22%;">Trabajo con variables de tipo simple (enteros, decimales, lógicos y cadenas)</p>
 			</a>
@@ -228,6 +216,19 @@
 				<p class="ttlfnt celltxt">Estructuras de datos complejas (Arrays y Objetos)</p>
 				<p class="txtfnt smlr cellalttxt alglef pdlf20 pdbn20" style="padding-right: 22%;">Trabajo con variables de tipo complejo (objetos y arrays)</p>
 			</a>
+
+			<div id="demobox_01" style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(0,0,0,.8); ">
+				<svg id="closebox" x="0px" y="0px"  style="position: absolute; width: 50px; height: 50px; top: 10px; right: 10px;" 
+				viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" 
+				onClick="this.parentElement.style.display='none';">
+					<g id="iconX">
+					  <path style="fill:var(--colorFill);fill-opacity:1;stroke:var(--colorFill);stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+					  d="m 136.37109,187.11914 74.09961,94.95313 -74.09961,93.94531 h 44.95313 c 16.25936,-24.69511 33.14116,-48.98302 48.99023,-73.94531 19.11265,23.00904 34.41902,49.07416 51.00977,73.94531 h 43.94531 l -76.09961,-94.95508 76.09961,-93.94336 h -44.95508 c -16.25932,24.69449 -33.14145,48.98152 -48.99023,73.94336 -19.11238,-23.00859 -34.41897,-49.07287 -51.00977,-73.94336 z" />
+					</g>
+				</svg>
+			</div>
+
+
 
 		</div>
 

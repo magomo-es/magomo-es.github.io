@@ -32,7 +32,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
+
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
@@ -45,16 +45,6 @@
 <link type="text/css" rel="stylesheet" href="/css/index.css" />
 
 <script src="/js/base.js"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-167128356-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-167128356-1');
-</script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
 
 </head>
 
@@ -208,6 +198,7 @@
 
 </header>
 
+<span id="blockmain" style="position: relative; display: block;">
 
 <main>
 
@@ -231,6 +222,42 @@
 
 		</div>
 
+<!-- bloquear scroll parent -->
+<!--iframe width="98vw" height="98vh" src="https://jsfiddle.net/magomo/b5z9rqk1/2/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0" style="margin: 1vh 1vw;"></iframe>
+
+
+< !-- script async src="//jsfiddle.net/magomo/b5z9rqk1/2/embed/js,html,css,result/dark/"></script>
+blockmain
+-->
+
+<script type="text/javascript">
+// - - - - - establece el alto del iframe según su contenido
+function onIframeLoaded( theobj ) {
+	if ( theobj ) { theobj.height = theobj.contentWindow.document.body.scrollHeight + "px"; }
+}
+</script>   
+
+
+
+		<div id="baseboxifrm" style="position: fixed; position: fixed; top: 0px; right: 0px; bottom: 0; left: 0; margin: 0; padding: 0; background-color: rgba(0,0,0,.8);">
+			<svg id="closebox" x="0px" y="0px"  style="position: absolute; width: 50px; height: 50px; top: 10px; right: 10px;" 
+			viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" 
+			onClick="this.parentElement.style.display='none';">
+				<g id="iconX">
+				  <path style="fill:var(--colorFill);fill-opacity:1;stroke:var(--colorFill);stroke-width:0.99999994px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+				  d="m 136.37109,187.11914 74.09961,94.95313 -74.09961,93.94531 h 44.95313 c 16.25936,-24.69511 33.14116,-48.98302 48.99023,-73.94531 19.11265,23.00904 34.41902,49.07416 51.00977,73.94531 h 43.94531 l -76.09961,-94.95508 76.09961,-93.94336 h -44.95508 c -16.25932,24.69449 -33.14145,48.98152 -48.99023,73.94336 -19.11238,-23.00859 -34.41897,-49.07287 -51.00977,-73.94336 z" />
+				</g>
+			</svg>
+			<div id="containerboxifrm" style="width: calc(100% - 60px); max-width: 1064px; height: 100%; margin: 150px auto 20px;">
+
+
+			</div>
+		</div>
+
+
+
+
+
 	</div>
 
 </main>
@@ -241,6 +268,8 @@
 	<p class="txtfnt smlsiz ttlclr algrig" style="float: right; width: 49%;">magomo@magomo.es</p>
 	<p class="txtfnt smlsiz ttlclr algcen" style="clear:both; margin-top:10px"><span class="smlr">(All rights reserved - Thanks Rufuus06 for background photo)</span></p>
 </footer>
+
+</span>
 
 </body>
 
