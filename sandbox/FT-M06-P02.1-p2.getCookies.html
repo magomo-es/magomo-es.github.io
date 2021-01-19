@@ -29,13 +29,16 @@ alert( readCookie( 'equipo_2' ) );
       console.log('create cookie => ' + the_cookie);
   }
 
+
 function readCookie( x_name ) {
 	var the_retu = "";
 	var the_name = x_name + '=';
 	var the_cookies = unescape( document.cookie ).split( ';' );
 	for ( var i = 0; i < the_cookies.length; i++ ) {
-		let c = the_cookies[i];
-		while ( c.charAt(0) = ' ' ) { c = c.substring( 1 ); }
+        let c = the_cookies[i];
+        while ( c.charAt(0) == ' ' ) { 
+            c = c.substring( 1 ); 
+        }
 		if ( c.indexOf( the_name ) == 0 ) { the_retu = c.substring( the_name.length, c.length ); }
 	}
 	return the_retu;

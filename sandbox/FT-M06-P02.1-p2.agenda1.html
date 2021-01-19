@@ -201,108 +201,12 @@
 
 	<article id="mainbox">
 
-		<h1 class="ttlfnt ttlclr ttlsiz">DWEC-M06 (DAW2B) 20/21 - Desarrollo Web en Entorno Cliente</h1>
+		<h1 class="ttlfnt ttlclr ttlsiz">DWEC-M06 (DAW2B) 20/21 - P02.1-p2 - Objetos y Cookies</h1>
 
-		<ul>
+        <p>Uso de Objetos en JS y almacenamiento de Cookies</p>
 
-			<li>
-
-				<section class="articlesection">
-
-					<h2 class="ttlfnt ttlclr midsiz">[1] M06 | CT2 | P2.1 (parte 1): Estructuras para almacenar información</h2>
-
-					<div id="grider2">
-
-						<div id="celda01" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/9k24zd8x/91/embedded/" onclick="viewIframeBox(this)">
-							<p class="ttlfnt celltxt">Estructuras de datos básicas (Variables)</p>
-							<p class="txtfnt smlr cellalttxt algrig pdrg20 pdbn20" style="padding-left: 22%;">Trabajo con variables de tipo simple (enteros, lógicos y cadenas ... y algun array simple)</p>
-						</div>
-
-						<div id="celda02" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/b5z9rqk1/5/embedded/" onclick="viewIframeBox(this)">
-							<p class="ttlfnt celltxt">Estructuras de datos complejas (Arrays y Objetos)</p>
-							<p class="txtfnt smlr cellalttxt alglef pdlf20 pdbn20" style="padding-right: 22%;">Trabajo con variables de tipo complejo (objetos y arrays)</p>
-						</div>
-
-					</div>	
-
-				</section>
-
-			</li>
-			<li>
-
-				<section class="articlesection">
-
-					<h2 class="ttlfnt ttlclr midsiz">[2] M06 | CT4 | P4.1: Objetos del Sistema y Elements del DOM</h2>
-
-					<div id="grider2">
-
-						<div id="celda03" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/qxkgrz0m/25/embedded/" onclick="viewIframeBox(this)">
-							<p class="ttlfnt celltxt">Objetos del Sistema</p>
-							<p class="txtfnt smlr cellalttxt algrig pdrg20 pdbn20" style="padding-left: 22%;">Uso de métodos de objetos de JavaScript. Uso del método ordenacion personalizado (sort) de array</p>
-						</div>
-
-						<div id="celda04" class="grider2cell" data-jsfiddle="//jsfiddle.net/magomo/17obuyzh/15/embedded/" onclick="viewIframeBox(this)">
-							<p class="ttlfnt celltxt">Elementos del DOM</p>
-							<p class="txtfnt smlr cellalttxt alglef pdlf20 pdbn20" style="padding-right: 22%;">Trabajo con accesos a elementos del DOM</p>
-						</div>
-
-					</div>	
-
-				</section>
-
-			</li>
-
-			<li>
-
-				<section class="articlesection">
-
-					<h2 class="ttlfnt ttlclr midsiz">[2] M06 | CT4 | P4.1: Objetos del Sistema y Elements del DOM</h2>
-
-					<div id="grider2">
-
-						<a href="/sandbox/FT-M06-P02.1-p2.agenda1.html" target="_self">
-							<div id="celda05" class="grider2cell">
-								<p class="ttlfnt celltxt">Objetos y Cookies</p>
-								<p class="txtfnt smlr cellalttxt algrig pdrg20 pdbn20" style="padding-left: 22%;">Uso de Objetos en JS y almacenamiento de Cookies</p>
-							</div>
-						</a>
-
-						<a href="/sandbox/FT-M06-P02.1-p2.agenda2.html" target="_self">
-							<div id="celda06" class="grider2cell">
-								<p class="ttlfnt celltxt">Objetos y Cookies + JSON</p>
-								<p class="txtfnt smlr cellalttxt alglef pdlf20 pdbn20" style="padding-right: 22%;">Uso de Objetos en JS y almacenamiento de Cookies en formato JSON</p>
-							</div>
-						</a>
-
-					</div>	
-
-				</section>
-
-			</li>
-
-		</ul>
 	
 	</div>
-
-	<!-- Iframe de ejecucion JSFiddle -->
-
-	<!-- bloquear scroll parent -->
-	
-	<div id="baseboxifrm" style="display: none;" data-open="0">
-
-		<svg id="closebox" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" onclick="viewIframeBox(this)">
-			<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFF" d="M33.27,20L20,20.09L43.33,50L20,79.91L33.27,80L50,58.55L66.73,80
-				L80,79.91L56.67,50L80,20.09L66.73,20L50,41.45L33.27,20z M0,50c0,27.61,22.39,50,50,50s50-22.39,50-50S77.61,0,50,0S0,22.39,0,50z
-					M5,50C5,25.15,25.15,5,50,5s45,20.15,45,45S74.85,95,50,95S5,74.85,5,50z"/>
-		</svg>
-
-		<!--script id="fiddlebox" async src=""></script-->
-		<iframe id="iframeBox" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
-
-	</div>
-	<script src="/js/index.js"></script>
-
-	<!-- Iframe de ejecucion JSFiddle -->
 
 </main>
 
@@ -314,5 +218,57 @@
 </footer>
 
 </body>
+
+<script>
+
+let presentacion_tecnica = {
+    equipo_1: '1#Álex,2#Iván,3#Rodolfo',
+    equipo_2: '1#Albert,2#Marcelo,3#Mario',
+    equipo_3: '1#Albert,2#Arnau,3#Carlos,4#Dani R.'
+};
+
+presentacion_tecnica["equipo_4"] = '1#Dani M.,2#Fran,3#Héctor,4#Illya';
+
+var presentacion_tecnica_String = JSON.stringify(presentacion_tecnica);
+
+createCookie( 'presentacion_tecnica', presentacion_tecnica_String, 1, '/', '');
+
+var presentacion_tecnica_Json = JSON.parse( readCookie( 'presentacion_tecnica' ) );
+
+alert( presentacion_tecnica_Json['equipo_2'] );
+
+
+function createCookie( x_name, x_value, x_days = 0, x_path = '', x_domain = '', x_secure = '' ) {
+    var the_expires = "";
+    if( x_days ) {
+        var date = new Date();
+        date.setTime( date.getTime() + ( x_days * 24 * 60 * 60 * 1000 ) );
+        the_expires = date.toUTCString();
+    }
+    var the_cookie = x_name + "="+ escape( x_value );
+    if ( the_expires ) { the_cookie += "; expires=" + the_expires; }
+    if ( x_path ) { the_cookie += "; path=" + escape( x_path ); }
+    if ( x_domain ) { the_cookie += "; domain=" + escape( x_domain ); }
+    if ( x_secure ) { the_cookie += "; secure"; }
+    document.cookie = the_cookie;
+    console.log('create cookie => ' + the_cookie);
+}
+
+
+function readCookie( x_name ) {
+	var the_retu = "";
+	var the_name = x_name + '=';
+	var the_cookies = unescape( document.cookie ).split( ';' );
+	for ( var i = 0; i < the_cookies.length; i++ ) {
+        let c = the_cookies[i];
+        while ( c.charAt(0) == ' ' ) { 
+            c = c.substring( 1 ); 
+        }
+		if ( c.indexOf( the_name ) == 0 ) { the_retu = c.substring( the_name.length, c.length ); }
+	}
+	return the_retu;
+}
+
+</script>
 
 </html>
