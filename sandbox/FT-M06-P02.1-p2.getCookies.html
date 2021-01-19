@@ -1,0 +1,44 @@
+<script>
+
+let presentacion_tecnica = {
+    equipo_1: '1#Álex,2#Iván,3#Rodolfo',
+    equipo_2: '1#Albert,2#Marcelo,3#Mario',
+    equipo_3: '1#Albert,2#Arnau,3#Carlos,4#Dani R.'
+};
+
+presentacion_tecnica["equipo_4"] = '1#Dani M.,2#Fran,3#Héctor,4#Illya';
+  
+for (let key in presentacion_tecnica) { createCookie( key, presentacion_tecnica[key], 1, '/', ''); }
+  
+alert( readCookie( 'equipo_2' ) );
+
+  function createCookie( x_name, x_value, x_days = 0, x_path = '', x_domain = '', x_secure = '' ) {
+      var the_expires = "";
+      if( x_days ) {
+          var date = new Date();
+          date.setTime( date.getTime() + ( x_days * 24 * 60 * 60 * 1000 ) );
+          the_expires = date.toUTCString();
+      }
+      var the_cookie = x_name + "="+ escape( x_value );
+      if ( the_expires ) { the_cookie += "; expires=" + the_expires; }
+      if ( x_path ) { the_cookie += "; path=" + escape( x_path ); }
+      if ( x_domain ) { the_cookie += "; domain=" + escape( x_domain ); }
+      if ( x_secure ) { the_cookie += "; secure"; }
+      document.cookie = the_cookie;
+
+      console.log('create cookie => ' + the_cookie);
+  }
+
+function readCookie( x_name ) {
+	var the_retu = "";
+	var the_name = x_name + '=';
+	var the_cookies = unescape( document.cookie ).split( ';' );
+	for ( var i = 0; i < the_cookies.length; i++ ) {
+		let c = the_cookies[i];
+		while ( c.charAt(0) = ' ' ) { c = c.substring( 1 ); }
+		if ( c.indexOf( the_name ) == 0 ) { the_retu = c.substring( the_name.length, c.length ); }
+	}
+	return the_retu;
+}
+
+</script>
