@@ -1,0 +1,126 @@
+<div>
+
+    <h2>Insert Person into Agenda</h2>
+
+    <label for="theName">Nombres</label>
+    <input type="text" id="theName" name="theName" />
+
+    <label for="theLastname">Apellidos</label>
+    <input type="text" id="theLastname" name="theLastname" />
+
+    <label for="theDocument">DNI/NIE</label>
+    <input type="text" id="theDocument" name="theDocument" />
+
+    <label for="thePhone">Teléfono</label>
+    <input type="phone" id="thePhone" name="thePhone" />
+
+    <button onclick="addPerson()">Agregar</button>
+
+</div>
+
+<h1>Agenda List</h1>
+<ul id="agendaBox"></ul>
+
+<script>
+
+var getFullName = function() { return this.theName + " " + this.theLastname; }
+
+var getFullData = function() { return this.theName + " " + this.theLastname + " - " + ((this.isDNI)?'DNI ':'NIE ') + this.theDNI + " - Tel. " + this.thePhone; }
+
+var agendaAry = [];
+
+var fullStringAgenda;
+
+// - - - - - - - - - showAgenda() genra string de agenda y visualiza
+function showAgenda() {
+
+    fullStringAgenda = "";
+
+    agendaAry.forEach( function ( value, index, array ) { fullStringAgenda += '<li>' + value.fullData() + "</li>"; console.log( value.fullData() ); } );
+
+    document.getElementById('agendaBox').innerHTML = fullStringAgenda;
+
+}
+
+
+function addPerson() {
+
+    isOK = true;
+    errorMsg = "";
+    var theNameObj = document.getElementById('theName');
+	var theLastnameObj = document.getElementById('theLastname');
+	var theDocumentObj = document.getElementById('theDocument');
+	var thePhoneObj = document.getElementById('thePhone');
+
+    if ( theNameObj.value.trim().length == 0 ) { errorMsg += ((errorMsg.length>0)?', ':'') + 'no name'; isOK = false; }
+    if ( theLastnameObj.value.trim().length == 0 ) { errorMsg += ((errorMsg.length>0)?', ':'') + 'no lastname'; isOK = false; }
+    if ( theDocumentObj.value.trim().length == 0 ) { errorMsg += ((errorMsg.length>0)?', ':'') + 'no document'; isOK = false; }
+
+    if (isOK) {
+
+        resultDNI = controlDNI( theDocumentObj.value );
+
+        agendaAry.push( { theName: theNameObj.value, theLastname: theLastname.value, theDNI: theDocumentObj.value, dniNumber: resultDNI.number, dniControl: resultDNI.control, isDNI: resultDNI.isdni, thePhone: thePhoneObj.value, fullName: getFullName, fullData: getFullData } );
+
+        showAgenda();
+
+        console.log( JSON.stringify(agendaAry) );
+
+    } else { 
+        
+        console.log( 'Error: ' + errorMsg ); 
+
+    }
+
+
+
+}
+
+
+function controlDNI( theDocument ) {
+
+    var tmpString = theDocument.trim(); 
+    var theValueString = ""; 
+    var isDNI = true;
+
+    for ( i=0; i<tmpString.length; i++ ) {
+    
+        let tmpNumber = tmpString.charCodeAt(i);
+    
+        if ( tmpNumber >= 48 && tmpNumber <= 57 ) { 
+
+            theValueString += tmpString.charAt(i); 
+  
+        } else if ( i == 0 ) {
+        
+            isDNI = false;
+
+            var theNIEValue = tmpString.charAt(i).toUpperCase().charCodeAt(0) - 88;
+
+        }
+
+    }
+
+    var theNumber = parseInt ( theValueString );
+
+    if (!isDNI) { theNumber += theNIEValue; }
+
+    return { number: theNumber, control: getControlDNI( theNumber ), isdni: isDNI };
+
+}
+
+function getControlDNI ( theNumber ) {
+
+// Control DNI Español: se divide el número entre 23 y el resto se sustituye por una letra que se determina por inspección mediante la siguiente tabla: 0:T, 1:R, 2:W, 3:A, 4:G, 5:M, 6:Y, 7:F, 8:P, 9:D, 10:X, 11:B, 12:N,	13:J,	14:Z,	15:S,	16:Q,	17:V,	18:H,	19:L,	20:C,	21:K,	22:E
+// Control NIE Español: os NIE's de extranjeros residentes en España tienen una letra (X, Y, Z), 7 números y dígito de control.
+// Para el cálculo del dígito de control se sustituye: X:0, Y:1, Z:2 y se aplica el mismo algoritmo que para el NIF.
+
+var control = theNumber % 23;
+
+var controlAry = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+
+return controlAry[control];
+
+}
+
+</script>

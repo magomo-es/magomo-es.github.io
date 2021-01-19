@@ -1,0 +1,89 @@
+<input type="text" id="documentId" name="documentId" placeholder="insert dni/nie" />
+<button onclick="calcControl('documentId')">Get Control</button>
+
+<input type="text" id="myName" name="myName" placeholder="insert your name" />
+<button onclick="sayHi('myName')">Say Hi</button>
+
+<p>Result Area: <span id="resultArea"></span></p>
+
+
+<script>
+
+// Uso de variables simples en JS
+
+// variable de alcance global
+var hiGlobalVar = "Hello";
+
+var resultArea = document.getElementById('resultArea');
+
+function sayHi( theElement ) {
+
+	var hiName = document.getElementById( theElement ).value;
+
+	var hiUser = generateHi( hiName );
+
+	resultArea.innerHTML = hiUser ;
+
+}
+
+
+function generateHi( theName ) {
+
+    return hiGlobalVar + " " + theName + " !!";
+
+}
+
+
+function calcControl( theElement ) {
+
+	var tmpString = document.getElementById(theElement).value.trim(); 
+	var theValueString = ""; 
+    var isDNI = true;
+    
+	for ( i=0; i<tmpString.length; i++ ) {
+		
+        let tmpNumber = tmpString.charCodeAt(i);
+        
+		if ( tmpNumber >= 48 && tmpNumber <= 57 ) { 
+    
+			theValueString += tmpString.charAt(i); 
+      
+        } else if ( i == 0 ) {
+            
+            isDNI = false;
+
+            var theNIEValue = tmpString.charAt(i).toUpperCase().charCodeAt(0) - 88;
+
+        }
+  
+	}
+
+alert(theValueString);
+
+    var theNumber = parseInt ( theValueString );
+
+    if (!isDNI) { theNumber += theNIEValue; }
+
+    var theResto = generateResto( theNumber, 23 );
+    
+    if (isDNI) { tmpString = "DNI " + tmpString; } else { tmpString = "NIE " + tmpString; }
+
+	resultArea.innerHTML = "El caracter de control del " + tmpString + " es " + theResto;
+
+}
+
+function generateResto ( theNumber, divideBy ) {
+
+    // Control DNI Español: se divide el número entre 23 y el resto se sustituye por una letra que se determina por inspección mediante la siguiente tabla: 0:T, 1:R, 2:W, 3:A, 4:G, 5:M, 6:Y, 7:F, 8:P, 9:D, 10:X, 11:B, 12:N,	13:J,	14:Z,	15:S,	16:Q,	17:V,	18:H,	19:L,	20:C,	21:K,	22:E
+    // Control NIE Español: os NIE's de extranjeros residentes en España tienen una letra (X, Y, Z), 7 números y dígito de control.
+    // Para el cálculo del dígito de control se sustituye: X:0, Y:1, Z:2 y se aplica el mismo algoritmo que para el NIF.
+
+    var control = theNumber % divideBy;
+
+    var controlAry = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+
+    return controlAry[control];
+
+}
+
+</script>

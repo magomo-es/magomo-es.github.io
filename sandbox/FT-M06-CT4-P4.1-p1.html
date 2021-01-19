@@ -1,0 +1,229 @@
+<div>
+
+    <h2>Insert Person into Agenda</h2>
+
+    <label for="theName">Nombres</label>
+    <input type="text" id="theName" name="theName" value="Mar" />
+
+    <label for="theLastname">Apellidos</label>
+    <input type="text" id="theLastname" name="theLastname" value="Gon" />
+
+    <label for="theDocument">DNI/NIE</label>
+    <input type="text" id="theDocument" name="theDocument" value="12345678Z" />
+
+    <label for="thePhone">Teléfono</label>
+    <input type="phone" id="thePhone" name="thePhone" value="93210000" />
+
+    <label for="theBirthdate">Fecha Nacimiento</label>
+    <input type="date" id="theBirthdate" name="theBirthdate" />
+
+    <button onclick="addPerson()">Agregar</button>
+
+</div>
+
+<h1>Agenda List</h1>
+<input type="radio" id="sortupdate" name="sortby" value="0" onchange="setSortByAgenda(this)" checked><label for="sortupdate" checked>Registro</label>
+<input type="radio" id="sortname" name="sortby" value="1" onchange="setSortByAgenda(this)"><label for="sortname">Nombre</label>
+<input type="radio" id="sortyearsold" name="sortby" value="2" onchange="setSortByAgenda(this)"><label for="sortyearsold">Edad</label>
+<input type="radio" id="sortascn" name="sortdir" value="0" onchange="setSortDirAgenda(this)" checked><label for="sortascn" checked>Ascendente</label>
+<input type="radio" id="sortdesc" name="sortdir" value="1" onchange="setSortDirAgenda(this)"><label for="sortdesc">Descendente</label>
+<button id="sortbyButton" onclick="sortAgendaBy()" data-sortby="0" data-sortdir="0">Ordenar</button>
+<ul id="agendaBox"></ul>
+
+<script>
+
+var agendaAry = [];
+
+var fullStringAgenda;
+
+var sortbyButton = document.getElementById('sortbyButton');
+
+// - - - - - - - - - PERSON OBJECT FUNCTIONS =>
+
+var getFullName = function() { return this.theName + " " + this.theLastname; }
+
+var getFullData = function() { return this.theName + " " + this.theLastname + " - " + ((this.isDNI)?'DNI ':'NIE ') + this.theDNI + " - Tel. " + this.thePhone + " - Nacimiento " + this.Birthdate(); }
+
+var getBirthdate = function() { 
+    dias = [ "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo" ];
+    meses = [ "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre" ];
+    return dias[this.theBirthdate.getDay()] + ", " + this.theBirthdate.getDate() + " de " +  meses[this.theBirthdate.getMonth()] + " de " + this.theBirthdate.getFullYear();
+ }
+
+var getYearsold = function() { return parseInt( parseInt( ( (new Date()).getTime() - this.theBirthdate.getTime() ) / 31557600 ) / 1000 ); }
+
+// - - - - - - - - - PERSON OBJECT FUNCTIONS //
+
+// - - - - - - - - - sortAgendaBy() ordena agenda por opciones 0.sortyearsold/1.sortname/2.sortupdate & 0.sortascn/1.sortdesc =>
+
+function setSortByAgenda( theObj ) { sortbyButton.dataset.sortby = theObj.value; }
+
+function setSortDirAgenda( theObj ) { sortbyButton.dataset.sortdir = theObj.value; }
+
+function sortAgendaBy() {
+
+    var sortFunction;
+
+    // agendaAry => theName, theLastname, theDNI, dniNumber, dniControl, isDNI, thePhone, theBirthdate, theUpdate, fullName(), fullData(), Birthdate(), Yearsold()
+
+    switch ( sortbyButton.dataset.sortby ) {
+        case '0': // SortBy theUpdate
+            if ( sortbyButton.dataset.sortdir == '0' ) {
+                sortFunction = function ( a, b ) { let retu = 0; if (a.theUpdate>b.theUpdate) { retu = 1; } else if (a.theUpdate<b.theUpdate) { retu = -1; } return retu; }; 
+            } else {
+                sortFunction = function ( a, b ) { let retu = 0; if (a.theUpdate<b.theUpdate) { retu = 1; } else if (a.theUpdate>b.theUpdate) { retu = -1; } return retu; }; 
+            }
+        break;
+        case '1': // SortBy theUpdate
+            if ( sortbyButton.dataset.sortdir == '0' ) {
+                sortFunction = function ( a, b ) { let retu = 0; if (a.fullName()>b.fullName()) { retu = 1; } else if (a.fullName()<b.fullName()) { retu = -1; } return retu; }; 
+            } else {
+                sortFunction = function ( a, b ) { let retu = 0; if (a.fullName()<b.fullName()) { retu = 1; } else if (a.fullName()>b.fullName()) { retu = -1; } return retu; }; 
+            }
+        break;
+        case '2': // SortBy theUpdate
+            if ( sortbyButton.dataset.sortdir == '0' ) {
+                sortFunction = function ( a, b ) { let retu = 0; if (a.Yearsold()>b.Yearsold()) { retu = 1; } else if (a.Yearsold()<b.Yearsold()) { retu = -1; } return retu; }; 
+            } else {
+                sortFunction = function ( a, b ) { let retu = 0; if (a.Yearsold()<b.Yearsold()) { retu = 1; } else if (a.Yearsold()>b.Yearsold()) { retu = -1; } return retu; }; 
+            }
+        break;
+    }
+
+    console.log('sortAgendaBy => sortFunction: ' + sortFunction );
+
+    agendaAry.sort( sortFunction );
+
+    showAgenda();
+
+}
+
+// - - - - - - - - - sortAgendaBy() ordena agenda por opciones 0.sortyearsold/1.sortname/2.sortupdate & 0.sortascn/1.sortdesc =>
+
+// - - - - - - - - - showAgenda() genra string de agenda y visualiza =>
+
+function showAgenda() {
+
+    fullStringAgenda = "";
+
+    agendaAry.forEach( function ( value, index, array ) { fullStringAgenda += '<li>' + value.fullData() + '<button onclick="delPerson(\'' + index + '\')">Delete</button></li>'; console.log( value.fullData() + " - Años: " + value.Yearsold() ); } );
+
+    document.getElementById('agendaBox').innerHTML = fullStringAgenda;
+
+}
+
+// - - - - - - - - - showAgenda() genra string de agenda y visualiza //
+
+// - - - - - - - - - delPerson( theIndex ) - Elimina elemento de array =>
+
+function delPerson( theIndex ) {
+
+    console.log("Elimina " + theIndex + " - " + agendaAry[theIndex].fullData() );
+
+    delete agendaAry[theIndex];
+
+    showAgenda();
+
+}
+
+// - - - - - - - - - delPerson( theIndex ) - Elimina elemento de array //
+
+// - - - - - - - - - addPerson() - Agrega elemento en array =>
+
+function addPerson() {
+
+    isOK = true;
+    errorMsg = "";
+    var theNameObj = document.getElementById('theName');
+	var theLastnameObj = document.getElementById('theLastname');
+	var theDocumentObj = document.getElementById('theDocument');
+	var thePhoneObj = document.getElementById('thePhone');
+    var theBirthdateObj = document.getElementById('theBirthdate');
+
+    if ( theNameObj.value.trim().length == 0 ) { errorMsg += ((errorMsg.length>0)?', ':'') + 'no name'; isOK = false; }
+    if ( theLastnameObj.value.trim().length == 0 ) { errorMsg += ((errorMsg.length>0)?', ':'') + 'no lastname'; isOK = false; }
+    if ( theDocumentObj.value.trim().length == 0 ) { errorMsg += ((errorMsg.length>0)?', ':'') + 'no document'; isOK = false; }
+    if ( theBirthdateObj.value.trim().length == 0 ) { errorMsg += ((errorMsg.length>0)?', ':'') + 'no birthdate'; isOK = false; }
+
+    if (isOK) {
+
+        let resultDNI = controlDNI( theDocumentObj.value );
+
+        let tmpBirthdate = theBirthdateObj.value.trim().split('-');
+
+        let theBirthdate = new Date();
+        theBirthdate.setDate( parseInt(tmpBirthdate[2]) );
+        theBirthdate.setMonth( parseInt(tmpBirthdate[1]-1) );
+        theBirthdate.setFullYear( parseInt(tmpBirthdate[0]) );
+        theBirthdate.setHours( 12 );
+        theBirthdate.setMinutes( 0 );
+
+        let actualTimestamp = ( (new Date()).getTime() / 1000 ).toFixed(0);
+
+        agendaAry.push( { theName: theNameObj.value, theLastname: theLastname.value, theDNI: theDocumentObj.value, dniNumber: resultDNI.number, dniControl: resultDNI.control, isDNI: resultDNI.isdni, thePhone: thePhoneObj.value, theBirthdate: theBirthdate, theUpdate: actualTimestamp, fullName: getFullName, fullData: getFullData, Birthdate: getBirthdate, Yearsold: getYearsold } );
+
+        showAgenda();
+
+        console.log( JSON.stringify(agendaAry) );
+
+    } else { 
+        
+        console.log( 'Error: ' + errorMsg ); 
+
+    }
+
+}
+
+// - - - - - - - - - addPerson() - Agrega elemento en array //
+
+// - - - - - - - - - controlDNI( theDocument ) - Gerenra control de documento: caracter, tipo y numero =>
+
+function controlDNI( theDocument ) {
+
+    var tmpString = theDocument.trim(); 
+    var theValueString = ""; 
+    var isDNI = true;
+
+    for ( i=0; i<tmpString.length; i++ ) {
+    
+        let tmpNumber = tmpString.charCodeAt(i);
+    
+        if ( tmpNumber >= 48 && tmpNumber <= 57 ) { 
+
+            theValueString += tmpString.charAt(i); 
+  
+        } else if ( i == 0 ) {
+        
+            isDNI = false;
+
+            var theNIEValue = tmpString.charAt(i).toUpperCase().charCodeAt(0) - 88;
+
+        }
+
+    }
+
+    var theNumber = parseInt ( theValueString );
+
+    if (!isDNI) { theNumber += theNIEValue; }
+
+    return { number: theNumber, control: getControlDNI( theNumber ), isdni: isDNI };
+
+}
+
+function getControlDNI ( theNumber ) {
+
+// Control DNI Español: se divide el número entre 23 y el resto se sustituye por una letra que se determina por inspección mediante la siguiente tabla: 0:T, 1:R, 2:W, 3:A, 4:G, 5:M, 6:Y, 7:F, 8:P, 9:D, 10:X, 11:B, 12:N,	13:J,	14:Z,	15:S,	16:Q,	17:V,	18:H,	19:L,	20:C,	21:K,	22:E
+// Control NIE Español: os NIE's de extranjeros residentes en España tienen una letra (X, Y, Z), 7 números y dígito de control.
+// Para el cálculo del dígito de control se sustituye: X:0, Y:1, Z:2 y se aplica el mismo algoritmo que para el NIF.
+
+var control = theNumber % 23;
+
+var controlAry = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+
+return controlAry[control];
+
+}
+
+// - - - - - - - - - controlDNI( theDocument ) - Gerenra control de documento: caracter, tipo y numero //
+
+</script>

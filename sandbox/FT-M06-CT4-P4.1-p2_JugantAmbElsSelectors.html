@@ -1,0 +1,146 @@
+<style>
+
+body { font-family: Arial, Helvetica, sans-serif; }
+
+tr[sexo=mujer] {
+   background-color: blue;
+   color: white;
+}
+
+</style>
+
+
+
+<table>
+    <div id="jefe" data-dpnt="contable" data-year="1999" sexo="mujer">Daniela</div>
+    <div classs = "edadMedia">
+        <span>Media:</span><span dato="media">-</span>
+        <span>Acum:</span><span dato="acum">-</span>
+    </div>
+    <tr class="cabecera"><th>Nombre</th><th>Edad</th></tr>
+    <tr sexo="mujer" data-dpnt="contable" data-year="1991"><td>Ana</td><td>18</td></tr>
+    <tr sexo="hombre" data-dpnt="informatica" data-year="2005"><td>Aitor</td><td>21</td></tr>
+    <tr sexo="mujer" data-dpnt="fotocopias" data-year="2004"><td>Bea</td><td>19</td></tr>
+    <tr sexo="hombre" data-dpnt="contable" data-year="2009"><td>Boris</td><td>22</td></tr>
+    <tr sexo="mujer" data-dpnt="contable" data-year="2018"><td>Carla</td><td>20</td></tr>
+    <tr sexo="hombre" data-dpnt="informatica" data-year="2021"><td>Cosme</td><td>23</td></tr>
+
+</table>
+
+<div class="resultado"></div>
+
+<button onclick="getDepartments()">Departamentos</button>
+<button onclick="getTheMedia()">Media</button>
+<script>
+function getDepartments() {
+    // Crea un botó que, quan es clicki,  ens mostri una pantalla informativa amb una llista de departaments.
+    var departments = new Array();
+    var theString = "";
+    (document.querySelectorAll('*[data-dpnt]')).forEach( function(value) { 
+        if ( !departments.includes(value.dataset.dpnt) ) { departments.push(value.dataset.dpnt); } 
+    } );
+    for ( var i=0; i<departments.length; i++) { theString += ((theString.length>0)?', ':'') + departments[i]; console.log(departments[i]); }
+    alert( "El personal trabaja en los departamentos de " + theString );
+}
+function getTheMedia() {
+    // Crea un botó que, quan es clicki,  ens mostri una pantalla informativa amb una llista de departaments.
+    var acumula = 0;
+    var qtty = 0;
+    var theyear = new Date().getFullYear();
+    (document.querySelectorAll('*[data-year]')).forEach( function(value) { 
+        acumula += theyear - parseInt(value.dataset.year);  
+        qtty++; 
+    } );
+    alert( "La media de antiguedad es de " + (acumula/qtty) );
+}
+</script>
+
+
+
+
+
+// Crea un botó que, quan es clicki,  ens mostri una pantalla informativa l’antiguitat mitja de totes les persones de la llista.
+
+
+<script>
+
+document.querySelector('.resultado').innerHTML = "<p>Test de resultado</p>";
+
+var tmpVar;
+
+/* Fes que tots els registres de tipus dona es resaltin de color verd */
+(document.querySelectorAll('*[sexo="mujer"]')).forEach( function(itm) { itm.style.backgroundColor = '#2b8744'; });
+
+/* Fes que tots els registres de sexe home es resaltin de color vermell i amb lletra blanca */
+(document.querySelectorAll('*[sexo="hombre"]')).forEach( function(itm) { itm.style.backgroundColor = '#e3242e'; itm.style.color = '#fff'; });
+
+/* Ara fes que tots els element de la pàgina de tipus dona es resaltin de color taronja. */
+(document.querySelectorAll('*[sexo="mujer"]')).forEach( function(itm) { itm.style.backgroundColor = '#e08b02'; });
+
+/* Afegeix al div de tipus "resultado" el valor de l'edat de Bea */
+(document.querySelectorAll('tr[sexo="mujer"]')).forEach( function(itm) { 
+    var tmpVar = itm.querySelectorAll('td');
+    if ( tmpVar[0].innerHTML=="Bea" ) { document.querySelector('.resultado').innerHTML = tmpVar[0].innerHTML + ' tiene ' + tmpVar[1].innerHTML + " años "; }
+});
+
+/* Afegeix al div de tipus "resultado" el valor de l'edat de Bea i el de Aitor separats per comes */
+(document.querySelectorAll('tr[sexo]')).forEach( function(itm) { 
+    var tmpVar = itm.querySelectorAll('td');
+    if ( tmpVar[0].innerHTML=="Bea" || tmpVar[0].innerHTML=="Aitor" ) { document.querySelector('.resultado').innerHTML += tmpVar[1].innerHTML + ","; }
+});
+
+/* Treure un any a l'edat de totes les dones */
+(document.querySelectorAll('tr[sexo="mujer"]')).forEach( function(itm) { 
+    var tmpVar = itm.querySelectorAll('td');
+    tmpVar[1].innerHTML = parseInt(tmpVar[1].innerHTML) - 1;
+});
+
+/* Posar a resultat el nom dels menors d'edat */
+(document.querySelectorAll('tr[sexo]')).forEach( function(itm) { 
+    var tmpVar = itm.querySelectorAll('td');
+    if ( parseInt(tmpVar[1].innerHTML)<18 ) { document.querySelector('.resultado').innerHTML += tmpVar[0].innerHTML + ","; }
+});
+
+/* Actualitzar la dada "media" i "acum" allà on toqui */
+var media = 0, acum = 0;
+(document.querySelectorAll('tr[sexo]')).forEach( function(itm) { 
+    var tmpVar = itm.querySelectorAll('td');
+    acum++; media += parseInt(tmpVar[1].innerHTML);
+});
+document.querySelector('span[dato="media"]').innerHTML = parseInt( media/acum );
+document.querySelector('span[dato="acum"]').innerHTML = acum;
+
+/* Afegeix un registre nou */
+tmpVar = document.createElement('tr');
+tmpVar.setAttribute('sexo','hombre');
+tmpVar.innerHTML = '<td>magomo</td><td>51</td>';
+document.querySelector('table').appendChild(tmpVar);
+
+/* Concatenar la dada "media" i "acum" allà on toqui, amb les noves dades */
+var media = 0, acum = 0;
+(document.querySelectorAll('tr[sexo]')).forEach( function(itm) { 
+    var tmpVar = itm.querySelectorAll('td');
+    acum++; media += parseInt(tmpVar[1].innerHTML);
+});
+document.querySelector('span[dato="media"]').innerHTML += ' / ' + parseInt( media/acum );
+document.querySelector('span[dato="acum"]').innerHTML += ' / ' + acum;
+
+/* Mostrar per consola el contingut del div que te un id que comença per "je" */
+console.log( 'div where ids starts with "je":' + document.querySelector('div[id^="je"]').innerHTML );
+
+/* Mostrar per consola el contingut del div que te un id que acaba per "fe" */
+console.log( 'div where ids starts with "fe":' + document.querySelector('div[id$="fe"]').innerHTML );
+
+/*
+console.log( "tr con sexo=hombre: " + ( document.querySelectorAll('tr[sexo="hombre"]') ).length );
+(document.querySelectorAll('tr[sexo="hombre"]')).forEach( function(value) { value.parentNode.removeChild(value); } );
+*/
+
+// Guarda en un atribut personalitzat el departament on treballa cada persona.
+// Guarda en un atribut personalitzat l’any en que va entrar a treballar cada persona.
+// Crea un botó que, quan es clicki,  ens mostri una pantalla informativa amb una llista de departaments.
+// Crea un botó que, quan es clicki,  ens mostri una pantalla informativa l’antiguitat mitja de totes les persones de la llista.
+
+
+
+</script>
