@@ -1,0 +1,43 @@
+#lisstitems { 
+    position: absolute; 
+    left: 0; 
+    top: 52px; 
+    display: block; 
+    width: 50%; 
+    height: calc(100% - 50px); 
+    padding: 0; 
+    border: solid 1px #555; 
+    list-style: none; 
+    overflow: auto;
+}		
+
+#lisstitems li { 
+    padding: 7px 9px; 
+    margin: 5px 0;
+    font-family: arial;
+    letter-spacing: .5px;
+    font-size: 14px;
+    display: none;
+}
+
+#lisstitems li span {
+
+    cursor: pointer;
+   
+}
+
+#lisstitems li button {
+
+    cursor: pointer;
+    float: right;
+    padding: 1px 3px;
+    border: 1px dotted;
+    border-radius: 3px;
+    background-color: transparent;
+    font-size: 10px;
+   
+}
+
+.bgLigthgrey { background-color: #f2f2f2; }
+
+.showItem { display: block !important; }

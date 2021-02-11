@@ -1,0 +1,2 @@
+
+objMenu.addEventListener("change", filterItems ); 
