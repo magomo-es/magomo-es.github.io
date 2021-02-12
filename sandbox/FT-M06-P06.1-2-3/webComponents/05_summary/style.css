@@ -1,0 +1,18 @@
+#orderSummary { 
+
+    display: block;
+    font-family: Arial;
+    font-size: 18px;
+    width: 48%;
+    border: 1px dotted #333;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+
+}
+
+#orderQtty { display: inline-block; min-width: 40px; padding: 0 5px; }
+
+#orderTotal { display: inline-block; min-width: 80px; padding: 0 5px; }

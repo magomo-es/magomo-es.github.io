@@ -1,3 +1,7 @@
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - FUNCTIONS =>
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - function filterItems( ex )
+
 function filterItems( ex ) {
 
     var thevalue;
@@ -10,6 +14,8 @@ function filterItems( ex ) {
     (document.querySelectorAll('li[data-grupo="'+thevalue+'"]')).forEach( theData => { theData.classList.add("showItem"); } );
 
 }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - FUNCTIONS //
 
 var objMenu = document.getElementById('listmenu');
 
