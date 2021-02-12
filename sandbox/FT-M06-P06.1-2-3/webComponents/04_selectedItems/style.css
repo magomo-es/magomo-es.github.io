@@ -26,3 +26,34 @@
     overflow: auto;
 }
 
+
+
+
+
+
+#listorder li { 
+    padding: 7px 9px; 
+    margin: 5px 0;
+    font-family: arial;
+    letter-spacing: .5px;
+    font-size: 14px;
+}
+
+#listorder li span {
+
+    cursor: pointer;
+   
+}
+
+#listorder li button {
+
+    cursor: pointer;
+    float: right;
+    padding: 1px 3px;
+    border: 1px dotted;
+    border-radius: 3px;
+    background-color: transparent;
+    font-size: 10px;
+   
+}
+
