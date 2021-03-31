@@ -2,7 +2,8 @@ Un problema real.
 
 - Obre un projecte al teu sandbox preferit, farem un petit exemple de consum d’API’s fent servir AXIOS.
 
-- Fes una pàgina web amb un color picker (https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_color_get, https://www.w3schools.com/colors/colors_picker.asp) que ajudi a recollir els valors RGB d’un color.
+- Fes una pàgina web amb un color picker (https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_color_get, 
+  https://www.w3schools.com/colors/colors_picker.asp) que ajudi a recollir els valors RGB d’un color.
 
 - Fes una consulta a http://www.thecolorapi.com/ per mostrar:
 
@@ -17,9 +18,15 @@ Un problema real.
 
 Superpoders.
 
-Afegeix  a un dels projectes que has fet en un dels exercicis anteriors alguna funcionalitat extra fent ús d’una API de tercers, al quadre de comentari anterior tens alguna recomanació, però si vols pots fer servir una API que t’ofereixi un servei que t’agradi més. 
+Afegeix  a un dels projectes que has fet en un dels exercicis anteriors alguna funcionalitat extra fent ús d’una API de tercers, 
+al quadre de comentari anterior tens alguna recomanació, però si vols pots fer servir una API que t’ofereixi un servei que t’agradi més. 
 
 API Service Selected: Catàleg de farmàcies de Catalunya
 - Developers - Building something using data?: https://dev.socrata.com/
 - API Docs: https://dev.socrata.com/foundry/analisi.transparenciacatalunya.cat/f446-3fny
+  * ?source=pr&region=Virgin Islands region
 - URL: https://analisi.transparenciacatalunya.cat/resource/f446-3fny.json
+
+
+
+https://dev.socrata.com/foundry/analisi.transparenciacatalunya.cat/f446-3fny?codi_postal=08024
