@@ -45,21 +45,8 @@ function selectColor() {
 
 function apiGetJsonClbk( fullapilink, callbackfn ) {
 
-    const xhr = new XMLHttpRequest();
-
-    xhr.responseType = 'json';
-  
-    xhr.onreadystatechange = () => { if (xhr.readyState === XMLHttpRequest.DONE) { 
-
-        console.log( xhr.response );
-
-        callbackfn( xhr.response ); 
-    
-    } };
-
-    xhr.open( 'GET', fullapilink );
-
-    xhr.send();
+    // Get One
+    axios.get( fullapilink ).then(callbackfn);
 
 }
 
