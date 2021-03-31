@@ -198,7 +198,7 @@
 
 <main style="min-height: 0 !important;">
 
-	<article id="mainbox" style="width: 100%; max-width: 1024px; height: 60vh; position: relative;">
+	<article id="mainbox" style="width: 100%; max-width: 1024px; min-height: 60vh; position: relative;">
 
 		<link type="text/css" rel="stylesheet" href="css/styles.css" />
 
@@ -206,11 +206,22 @@
 
 		<p class="ttlfnt ttlclr txtsiz mgbn20 pdtp20">Selecciona un color: <input type="color" id="myColor" class="cupnt mglf20"></p>
 
-		<button onclick="selectColor()" class="mgbn20" style="padding: 7px 15px; border-radius: 5px; color: #fff; background-color: #1baa08;">Obtener datos color</button>
+		<button onclick="selectColor()" class="cupnt mgbn20" style="padding: 7px 15px; border-radius: 5px; color: #fff; background-color: #1baa08;">Obtener datos color</button>
 		
-		<h1 class="ttlfnt ttlclr midsiz mgbn20" id="elm_h1"></h1>
+		<h1 class="ttlfnt ttlclr midsiz mgbn20" id="clr_elm_h1"></h1>
 
-		<p class="ttlfnt ttlclr txtsiz mgbn20" id="elm_p"></p>
+		<p class="ttlfnt ttlclr txtsiz mgbn20" id="clr_elm_p"></p>
+
+		<hr />
+
+		<p class="ttlfnt ttlclr txtsiz mgbn20 pdtp20">Ingresa CP: <input type="text" id="PostalCode" class="cupnt mglf20" style="padding: 5px; border-bottom: dotted 1px #333;"></p>
+
+		<button onclick="searchFarmacy()" class="cupnt mgbn20" style="padding: 7px 15px; border-radius: 5px; color: #fff; background-color: #104ac7;">Buscar Farmacia</button>
+		
+		<h1 class="ttlfnt ttlclr midsiz mgbn20" id="frm_elm_h1"></h1>
+
+		<p class="ttlfnt ttlclr txtsiz mgbn20" id="frm_elm_p"></p>
+
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
 		<script src="js/script.js"></script>

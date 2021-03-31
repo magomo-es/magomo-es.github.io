@@ -1,8 +1,8 @@
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ONCLICK function =>
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ONCLICK selectColor =>
 
 function selectColor() {
 
-    const selectedColor = (document.getElementById("myColor").value).substring(1)
+    const selectedColor = (document.getElementById("myColor").value).substring(1);
 
     const baseurl = 'https://www.thecolorapi.com/id';
 
@@ -12,40 +12,91 @@ function selectColor() {
 
     apiGetJsonClbk( baseurl + params, (dataapi) => {
 
-        if ( dataapi ) {
+        if ( dataapi.data ) {
 
-            if ( !dataapi.code ) {
-
-                // OK show => El nom del color escollit en un <h1> i el contingut JSON que ha generat la consulta en un <p>
-                document.getElementById("elm_h1").innerHTML = "The name color is " + dataapi.name.value;
-                document.getElementById("elm_p").innerHTML = JSON.stringify(dataapi);
-
-            } else {
-
-                // KO show => Que hi ha hagut un error en un <h1>
-                document.getElementById("elm_h1").innerHTML = "API responds with error code " + dataapi.code;
-                document.getElementById("elm_p").innerHTML = dataapi.message;
-
-            }
+            if ( !dataapi.data.code ) { inserElmData( "clr", "The name color is " + dataapi.data.name.value, JSON.stringify(dataapi.data) ); } 
+            else { inserElmData( "clr", "API responds with error code " + dataapi.data.code, dataapi.data.message ); }
 
         } else {
 
-            document.getElementById("elm_h1").innerHTML = "An unexpected error occurred in the connection";
-            document.getElementById("elm_p").innerHTML = "";            
-
+            inserElmData( "clr", "An unexpected error occurred in the connection" + dataapi.data.code, "" );
         }
 
     } );
 
 }
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ONCLICK function //
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ONCLICK selectColor //
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ONCLICK searchFarmacy =>
+
+function searchFarmacy() {
+
+    const searchByCP = document.getElementById("PostalCode").value;
+
+    console.log('searchByCP: '+searchByCP+' / searchByCP.length: '+(searchByCP.length));
+
+    const baseurl = 'https://analisi.transparenciacatalunya.cat/resource/f446-3fny.json';
+
+    const params = (searchByCP.length) ? '?codi_postal=' + searchByCP : '';
+
+    console.log('api url: '+baseurl + params);
+
+    apiGetJsonClbk( baseurl + params, (dataapi) => {
+
+        console.log(JSON.stringify(dataapi.data));
+
+        if ( dataapi.data ) {
+
+            if ( !dataapi.data.error ) { 
+                
+                let strListData = "", size = 0, key;
+
+                for ( key in dataapi.data) { 
+                    strListData += '<li style="padding: 5px 0;">' +
+                        dataapi.data[key].nom_farmacia + ' - ' + 
+                        dataapi.data[key].tipus_via + ' ' + 
+                        dataapi.data[key].nom_via + ' ' + 
+                        dataapi.data[key].num_via + ' - ' + 
+                        dataapi.data[key].codi_postal + ' ' +
+                        dataapi.data[key].nom_municipi + '</li>'; 
+                    ++size;
+                }
+
+                inserElmData( "frm", "Se han encontrado "+size+" farmacias", '<ul style="list-style: unset;">'+strListData+'</ul>' ); 
+
+            } else { 
+
+                inserElmData( "frm", "Se ha producido un error en la consulta", dataapi.data.message ); 
+
+            }
+
+        } else {
+
+            inserElmData( "frm", "No se ha posido conectar con la fuente de datos", "" );
+        }
+
+    } );
+
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ONCLICK searchFarmacy //
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SHOW inserElmData =>
+
+function inserElmData( block,  data_h1, data_p ) {
+
+    document.getElementById(block+"_elm_h1").innerHTML = data_h1;
+    document.getElementById(block+"_elm_p").innerHTML = data_p;
+
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - SHOW inserElmData //
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - AJAX function =>
 
 function apiGetJsonClbk( fullapilink, callbackfn ) {
 
-    // Get One
     axios.get( fullapilink ).then(callbackfn);
 
 }
